@@ -1,0 +1,33 @@
+From e43d6e3f51d453b69d658b11eea3bacd292487b8 Mon Sep 17 00:00:00 2001
+From: David Bentham <david.bentham@lvs.co.uk>
+Date: Fri, 10 Jun 2022 17:05:34 +0100
+Subject: [PATCH] kernel/mtd: add new spi-nor support for EN25QX128A and
+ EN25QH16 found in Xiaomi Mi 4AG/4C router models from 2021
+
+---
+ ...d-spi-nor-add-eon-en25qx128a-en25qh16-k51x.patch | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100644 target/linux/generic/pending-5.4/477-mtd-spi-nor-add-eon-en25qx128a-en25qh16-k51x.patch
+
+diff --git a/target/linux/generic/pending-5.4/477-mtd-spi-nor-add-eon-en25qx128a-en25qh16-k51x.patch b/target/linux/generic/pending-5.4/477-mtd-spi-nor-add-eon-en25qx128a-en25qh16-k51x.patch
+new file mode 100644
+index 0000000000..67d5bf245c
+--- /dev/null
++++ b/target/linux/generic/pending-5.4/477-mtd-spi-nor-add-eon-en25qx128a-en25qh16-k51x.patch
+@@ -0,0 +1,13 @@
++--- a/drivers/mtd/spi-nor/spi-nor.c
+++++ b/drivers/mtd/spi-nor/spi-nor.c
++@@ -2240,8 +2240,10 @@ static const struct flash_info spi_nor_i
++ 	{ "en25p64",    INFO(0x1c2017, 0, 64 * 1024,  128, 0) },
++ 	{ "en25q64",    INFO(0x1c3017, 0, 64 * 1024,  128, SECT_4K) },
++ 	{ "en25q128",   INFO(0x1c3018, 0, 64 * 1024,  256, SECT_4K) },
+++	{ "en25qx128a",	INFO(0x1c7118, 0, 64 * 1024,  256, SECT_4K) },
++ 	{ "en25q80a",   INFO(0x1c3014, 0, 64 * 1024,   16,
++ 			SECT_4K | SPI_NOR_DUAL_READ) },
+++	{ "en25qh16",   INFO(0x1c7015, 0, 64 * 1024,   32, 0) },
++ 	{ "en25qh32",   INFO(0x1c7016, 0, 64 * 1024,   64, 0) },
++ 	{ "en25qh64",   INFO(0x1c7017, 0, 64 * 1024,  128,
++ 			SECT_4K | SPI_NOR_DUAL_READ) },
+-- 
+GitLab
+
